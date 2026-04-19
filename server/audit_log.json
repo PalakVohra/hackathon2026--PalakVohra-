@@ -1,0 +1,46 @@
+[
+  {
+    "ticket_id": "T1",
+    "status": "RESOLVED",
+    "message": "Refund processed for order 123",
+    "logs": [
+      "Start processing",
+      "Extracted order id: 123",
+      "Intent detected: refund",
+      "Order found: 123",
+      "Customer found: Utkarsh",
+      "Checking refund eligibility",
+      "Refund success at 2026-04-19T11:11:03.204Z",
+      "Final Decision: RESOLVED"
+    ],
+    "confidence": 0.9
+  },
+  {
+    "ticket_id": "T2",
+    "status": "RESOLVED",
+    "message": "Order 456 is shipped",
+    "logs": [
+      "Start processing",
+      "Extracted order id: 456",
+      "Intent detected: status",
+      "Order found: 456",
+      "Customer found: Rahul",
+      "Returning order status",
+      "Final Decision: RESOLVED"
+    ],
+    "confidence": 0.85
+  },
+  {
+    "ticket_id": "T3",
+    "status": "ESCALATED",
+    "message": "Escalated to human agent",
+    "logs": [
+      "Start processing",
+      "Extracted order id: 999",
+      "Intent detected: refund",
+      "Order not found → escalate",
+      "Final Decision: ESCALATED"
+    ],
+    "confidence": 0.3
+  }
+]
