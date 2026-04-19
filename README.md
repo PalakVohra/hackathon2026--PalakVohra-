@@ -4,163 +4,146 @@ An AI-powered system that automatically processes customer support tickets, deci
 
 ---
 
-## 🚀 Problem Statement
+## 🚀 Features
 
-Modern platforms receive thousands of repetitive support tickets daily.  
-Most of them are:
-- Refund requests
-- Order status queries
-- Policy clarifications
-
-These are often handled manually, leading to:
-- ❌ Delays
-- ❌ High operational cost
-- ❌ Inconsistent decisions
-
----
-
-## 💡 Solution
-
-We built an **Autonomous Support Agent** that:
-
-1. 📥 Ingests support tickets  
-2. 🔍 Extracts relevant information (order ID, intent)  
-3. 📚 Checks policies (knowledge base)  
-4. 🧠 Uses AI to decide actions  
-5. ⚖️ Applies fallback logic when AI fails  
-6. 💰 Resolves (e.g., refund) OR escalates  
-7. 📝 Logs every step for auditability  
+* 🎯 Automatic ticket classification (refund, status, cancel, issue)
+* ⚡ Fast local decision engine (instant response)
+* 🤖 Optional AI-based reasoning using OpenAI
+* 🔁 Intelligent fallback system (works even without API key)
+* 📜 Full audit logs for every decision
+* 📊 Summary dashboard (resolved vs escalated)
 
 ---
 
 ## 🏗️ Architecture
 
-
----
-
-## ⚙️ Features
-
-### ✅ Autonomous Decision Making
-- Uses AI to decide action
-- Falls back to rule-based logic if AI fails
-
-### 🔁 Retry Mechanism
-- Handles service failures (e.g., order service timeout)
-- Retries before escalation
-
-### 🛡️ Safe Fallback
-- Ensures no ticket fails silently
-- Always resolves or escalates
-
-### 📊 Audit Logging
-- Logs every step:
-  - Extraction
-  - Policy check
-  - Decision
-  - Final action
-
-### 🎯 Confidence-Based Escalation
-- Low-confidence decisions are escalated automatically
-
-### 🎨 Interactive UI
-- Displays results in clean cards
-- Shows status (Resolved / Escalated)
-- Expandable logs
-- Summary metrics
-
----
-
-## 🧪 Example Output
-
-| Ticket | Action | Reason |
-|------|--------|--------|
-| T1 | ✅ Resolved | Refund issued |
-| T2 | ⚠️ Escalated | Low confidence |
-| T3 | ❌ Escalated | Order not found |
-
----
-
-## 📁 Project Structure
-
+```
+User Ticket → Agent → Decision Engine
+                    ↓
+        Local Logic (fast)
+                    ↓
+        AI (optional, async)
+                    ↓
+        Action (resolve / escalate)
+                    ↓
+        Logs + UI display
+```
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Backend:** Node.js, Express  
-- **Frontend:** HTML, CSS, JavaScript  
-- **AI:** OpenAI API  
-- **Environment:** dotenv  
+* Node.js (Backend)
+* Express.js (API server)
+* Vanilla JS + HTML + CSS (Frontend)
+* OpenAI API (optional AI reasoning)
 
 ---
 
-## ▶️ How to Run
+## ⚙️ Setup Instructions
 
-### 1. Install dependencies
-### 2. Add API key
-Create `.env` file:
+### 1. Clone the repository
 
-### 3. Start server
+```bash
+git clone https://github.com/PalakVohra/agentic-ai-support.git
+cd agentic-ai-support
+```
 
-### 4. Open UI
+---
 
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+---
+
+### 3. (Optional) Add OpenAI API Key
+
+Create a `.env` file inside the **server folder**:
+
+```
+server/.env
+```
+
+Add:
+
+```env
+OPENAI_API_KEY=your_api_key_here
+```
+
+---
+
+### 4. Run the server
+
+```bash
+npm start
+```
+
+---
+
+### 5. Open in browser
+
+```text
+http://localhost:3000
+```
 
 Click **Run Agent** to process tickets.
 
 ---
 
-## 🔄 Flow of Execution
+## 🧠 How It Works
 
-1. Ticket received  
-2. Order ID extracted  
-3. Customer & order fetched  
-4. Policy checked  
-5. Refund eligibility evaluated  
-6. AI decision OR fallback logic  
-7. Action executed:
-   - Refund → resolved  
-   - Not eligible → escalated  
-   - Error → safe escalation  
-8. Logs generated  
+1. Extracts order ID from ticket
+2. Detects intent (local + AI hybrid)
+3. Fetches order & customer data
+4. Decides:
+
+   * ✅ Resolve (refund / status / cancel)
+   * ⚠️ Escalate (if uncertain or invalid)
+5. Logs every step for transparency
 
 ---
 
-## 🧠 Key Highlights
+## ⚡ Important Note
 
-- Hybrid AI + Rule-based system  
-- Fault-tolerant design  
-- Real-world production thinking  
-- Fully transparent decision-making  
+> This system uses a **hybrid approach**:
+>
+> * Fast rule-based logic for instant response
+> * AI reasoning (OpenAI) for smarter classification
 
----
-
-## 🚀 Future Improvements
-
-- Real-time ticket ingestion (Kafka / queues)  
-- Database integration (MongoDB / PostgreSQL)  
-- Advanced NLP for classification  
-- Multi-language support  
-- Admin dashboard  
+👉 The application works **fully even without an API key**.
 
 ---
 
-## 🏆 Why This Stands Out
+## 📸 Demo Output
 
-Unlike basic chatbots, this system:
+* Ticket processing with logs
+* Confidence scores
+* Resolved vs escalated summary
 
-- Takes **actions**, not just responses  
-- Handles **uncertainty intelligently**  
-- Ensures **no failure cases**  
-- Maintains **full auditability**  
+---
+
+## 🎯 Hackathon Focus
+
+This project demonstrates:
+
+* Agentic decision-making
+* Tool usage (order, refund, customer APIs)
+* Intelligent escalation
+* Observability via logs
 
 ---
 
 ## 👨‍💻 Author
 
-Built as part of an **Agentic AI Hackathon Project**
+**Palak Vohra**
 
 ---
 
-## 📌 License
+## 🏁 Final Note
 
-MIT License
+Built as part of an Agentic AI Hackathon — focused on creating a production-ready autonomous support system.
+
+---
